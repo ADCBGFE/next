@@ -1,5 +1,7 @@
 package com.spring.board.vo;
 
+import java.util.Objects;
+
 public class BoardVo {
 	
 	private String 	boardType;
@@ -52,6 +54,33 @@ public class BoardVo {
 	}
 	public void setModifier(String modifier) {
 		this.modifier = modifier;
+	}
+	
+	@Override
+	public String toString() {
+		return "BoardVo [boardType=" + boardType + ", boardNum=" + boardNum + ", boardTitle=" + boardTitle
+				+ ", boardComment=" + boardComment + ", creator=" + creator + ", modifier=" + modifier + ", totalCnt="
+				+ totalCnt + "]";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(boardComment, boardNum, boardTitle, boardType, creator, modifier, totalCnt);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BoardVo other = (BoardVo) obj;
+		return Objects.equals(boardComment, other.boardComment) && boardNum == other.boardNum
+				&& Objects.equals(boardTitle, other.boardTitle) && Objects.equals(boardType, other.boardType)
+				&& Objects.equals(creator, other.creator) && Objects.equals(modifier, other.modifier)
+				&& totalCnt == other.totalCnt;
 	}
 	
 	

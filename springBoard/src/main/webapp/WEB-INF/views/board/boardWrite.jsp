@@ -77,7 +77,7 @@
 		</tr>
 		<tr>
 			<td align="right">
-				<a href="/board/boardList.do">List</a>
+				<a href="/board/boardList.do"><input type="button" value="List"></a>
 			</td>
 		</tr>
 	</table>

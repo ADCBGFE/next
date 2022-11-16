@@ -8,6 +8,7 @@
 <title>boardUpdate</title>
 </head>
 
+
 <script type="text/javascript">
 
 	$j(document).ready(function(){
@@ -39,8 +40,11 @@
 
 </script>
 
+ 
 <body>
 <form class="boardUpdate">
+	<input name="boardType" type="hidden" value="${board.boardType}">
+	<input name="boardNum" type="hidden" value="${board.boardNum}">
 	<table align="center">
 		<tr>
 			<td>
@@ -65,8 +69,11 @@
 						<td align="center">
 						Writer
 						</td>
+						<td width="400">
+						
 						<td>
 						</td>
+						
 					</tr>
 				</table>
 			</td>
@@ -74,10 +81,11 @@
 		<tr>
 			<td align="right">
 				<input id="submit" type="button" value="¼öÁ¤">
-				
 			</td>
 		</tr>
 	</table>
-</form>	
+</form>
+
 </body>
+
 </html>
