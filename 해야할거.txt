@@ -1,0 +1,45 @@
+ppt 6번 2번
+
+글쓰기들어가서 type입력란 안에 select박스 넣기 - 완
+종류은 일반 qna 익명 자유
+value   a01  a02  a03  a04	
+
+게시판 리스트의 type에 종류별로 넣기
+쿼리문 변경, 조인
+
+
+하단에 타입 체크박스만들고 전체, 부분, 단일 체크후 조회하면 
+해당타입의 글이 나오도록
+
+1. 글작성시 boardtype에 codeid값이 들어가야함.
+	selectbox의 value값에 codeid 넣음.
+	boardtype도 이제 고정값이 아니기때문에
+	value="${board.boardTitle}" 같이 값을 지정해줘야함.
+	위 지정값에 selectbox의 value값이 들어가야함.
+
+https://jsfiddle.net/L2s1mxdo/
++ $('input[name=boardType]').attr('value',"val");
+
+
+        SELECT 
+		   BOARD_TYPE
+		  ,BOARD_NUM
+		  ,BOARD_TITLE
+		  ,BOARD_COMMENT
+		  ,TOTAL_CNT
+		FROM 
+		(
+		  SELECT
+		      	 BOARD_TYPE
+				,BOARD_NUM
+				,BOARD_TITLE
+				,BOARD_COMMENT
+		      	,ROW_NUMBER() OVER(ORDER BY BOARD_NUM DESC) AS NUMROW
+		      	,COUNT(*) OVER() AS TOTAL_CNT
+			FROM
+				BOARD	
+		)
+		WHERE NUMROW BETWEEN (#{pageNo}-1)*10 + 1 AND (#{pageNo})*10
+
+	
+

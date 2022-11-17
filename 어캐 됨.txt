@@ -1,7 +1,7 @@
 업데이트 됨
 	jsp에 input형식에 hidden으로 값을넣어 null이 안되게 하고
 	컨트롤러에서 받고자하는 값인 boardNum을 메소드에 넣고
-	model.addAttribute 를 이용해서 selectboard의 값도 받고,
+	model.addAttribute 를 이용해서 selectboard의 받고,
 	boardNum도 추가로 넣으니까 됨
 
 삭제 됨
@@ -10,3 +10,21 @@
 	ajax 작동하게 버튼 만들고
 	컨트롤러는 boardwriteaction을 고대로 가져와서 wirte만 delete로 바꿈
 	서비스 dao는 다른 insert나 update와 동일한 형식으로
+
+글작성시 보드타입에 코드타입넣기
+	boardwrite.jsp 에서 selectbox만들고 아래에 input만듦
+	j쿼리 와onchange써서 input value에 selectbox value가입력되게 하고
+	$('input[name=boardType]').attr('value',"val"); 로
+	입력된input value 가 "${board.boardType}" 로 인식? 되도록함.
+
+글목록볼때 boardtype에 codename이 나오게 하기
+	list쿼리문 수정함. 서브쿼리를 a, com_code를 b로 잡고
+	select의 boardtype대신 b.com_name 넣고
+	com_code와 조인문 만듬.
+
+	WHERE A.BOARD_TYPE = B.CODE_ID
+	AND B.CODE_TYPE = 'menu'
+
+	조건문을 위처럼 함.
+	맨위에 resultMap에 codeName 추가하고 vo에도 추가후 getset넣음
+	list.jsp에서 ${list.boardType} 을 ${list.codeName} 로 바꿈
